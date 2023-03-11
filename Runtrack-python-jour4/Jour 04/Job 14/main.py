@@ -1,13 +1,19 @@
-def my_long_word(n, string):
-    words = string.split()
-    longs_words = []
+def my_long_word(n, phrase):
+    words = phrase.split()
+    result = ''
     for word in words:
-        if len(word) > n:
-            longs_words.append(word)
-    return " ".join(longs_words)
+        is_long_word = True
+        count = 0
+        for c in word:
+            if not c.isalpha():
+                is_long_word = False
+                break
+            count += 1
+        if is_long_word and count > n:
+            result += word + ' '
+    return result.strip()
 
-# exemple de chaine de charactères
-string = "La peur est le chemin vers le côté obscur la peur mène à la colère la colère mène à la haine la haine mène à la souffrance"
+texte = "La peur est le chemin vers le côté obscur. La peur mène à la colère, la colère mène à la haine, la haine mène à la souffrance."
 n = 3
-result = my_long_word(n, string)
-print("Les mots plus longs que", n, "sont :", result)
+resultat = my_long_word(n, texte)
+print(resultat)

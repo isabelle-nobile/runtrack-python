@@ -1,11 +1,17 @@
-def trier_liste_croissant(liste):
-    for i in range(len(liste)):
-        for j in range(i+1, len(liste)):
-            if liste[i] > liste[j]:
-                liste[i], liste[j] = liste[j], liste[i]
+def tri_liste(liste):
+    n = 0
+    while True:
+        try:
+            _ = liste[n]
+            n += 1
+        except IndexError:
+            break
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if liste[j] > liste[j+1]:
+                liste[j], liste[j+1] = liste[j+1], liste[j]
     return liste
 
-# exemple d'une liste
-L = [34, 16, 428, 319, 9]
-L_triee = trier_liste_croissant(L)
-print(L_triee)
+
+liste = [15, 8, 45, 13]
+print(tri_liste(liste))
